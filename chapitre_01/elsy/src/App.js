@@ -2,6 +2,7 @@ import React from "react";
 import Steps from "./components/Steps"; 
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/global.css"
 import "./App.css";
 
 const tempsMin = -20;
