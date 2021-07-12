@@ -21,13 +21,13 @@ class App extends React.Component {
           <p>Heart : {heartMin}</p>
           <p>Temperature : {tempsMin}</p>
           <p>Steps : {stepsMin}</p>
-          
+          {/* DRINK */}
           <Box icon="local_drink" color="#3A85FF" value={1.5} unit="L" /> 
-          
+          {/* STEPS */}
           <Box icon="directions_walk" color="black" value={3000} unit="steps" />
-          
+          {/* HEART */}
           <Box icon="favorite" color="red" value={120} unit="bpm" />
-          
+          {/* TEMPERATURE */}
           <Box icon="wb_sunny" color="yellow" value={-10} unit="°C" />
         </div>
       </div>
