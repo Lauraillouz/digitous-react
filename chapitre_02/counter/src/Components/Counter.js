@@ -6,7 +6,7 @@ class Counter extends React.Component {
     constructor() {
         super();
         this.state = {
-          count: 0,
+            count: 0
         }
     }
     
@@ -28,6 +28,7 @@ class Counter extends React.Component {
                         alert ("Vous ne pouvez pas descendre en dessous de zéro !");
                     } else this.setState(substractFunction)
                 }} />
+                
             </div>
         )
     }
