@@ -2,7 +2,7 @@ import React from "react";
 // Components
 import Counter from "./Components/Counter";
 // CSS
-import './App.css';
+import "./css/App.css";
 
 class App extends React.Component {
 

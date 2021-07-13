@@ -24,7 +24,9 @@ class Counter extends React.Component {
                     let substractFunction = {
                         count: this.state.count - 1
                     }
-                    this.setState(substractFunction)
+                    if (this.state.count <= 0) {
+                        alert ("Vous ne pouvez pas descendre en dessous de zéro !");
+                    } else this.setState(substractFunction)
                 }} />
             </div>
         )
