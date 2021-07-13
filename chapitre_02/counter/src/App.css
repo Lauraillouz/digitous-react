@@ -1,0 +1,11 @@
+/* Buttons */
+button {
+  border: none;
+  width: 50px;
+}
+.green {
+  background-color: #28B463;
+}
+.red {
+  background-color: #C70039;
+}
