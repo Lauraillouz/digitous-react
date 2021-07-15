@@ -1,5 +1,5 @@
 import React from "react";
-import Box from "./components/Box"; 
+import Box from "./Components/Box"; 
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/global.css"
@@ -14,21 +14,29 @@ const stepsMax = 50000;
 
 
 class App extends React.Component {
+
+constructor() {
+  super();
+  this.state = {
+    water: 0,
+    heart: 120,
+    temperature: -10,
+    steps: 3000
+  }
+}
+
   render () {
     return (
       <div className="container-fluid">
         <div className="row">
-          <p>Heart : {heartMin}</p>
-          <p>Temperature : {tempsMin}</p>
-          <p>Steps : {stepsMin}</p>
-          {/* DRINK */}
+          {/* WATER */}
           <Box icon="local_drink" color="#3A85FF" value={1.5} unit="L" /> 
           {/* STEPS */}
-          <Box icon="directions_walk" color="black" value={3000} unit="steps" />
+          <Box icon="directions_walk" color="black" min={stepsMin} max={stepsMax} value={3000} unit="steps" />
           {/* HEART */}
-          <Box icon="favorite" color="red" value={120} unit="bpm" />
+          <Box icon="favorite" color="red" min={heartMin} max={heartMax} value={120} unit="bpm" />
           {/* TEMPERATURE */}
-          <Box icon="wb_sunny" color="yellow" value={-10} unit="°C" />
+          <Box icon="wb_sunny" color="yellow" min={tempsMin} max={tempsMax} value={-10} unit="°C" />
         </div>
       </div>
     );
