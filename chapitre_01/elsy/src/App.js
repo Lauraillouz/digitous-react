@@ -12,59 +12,79 @@ const heartMax = 180;
 const stepsMin = 0;
 const stepsMax = 50000;
 
+const initialState = {
+  water: 1.5,
+  heart: 120,
+  temperature: -10,
+  steps: 3000
+}
 
 class App extends React.Component {
 
   constructor() {
     super();
-    this.state = {
-      water: 1.5,
-      heart: 120,
-      temperature: -10,
-      steps: 3000
-    }
+    this.state = initialState
   }
+
 
   onHeartChange = (e) => {
     this.setState({
       ...this.state,
-      heart: e.target.value
+        heart: e.target.value
     })
-  }
+
+    this.setState((prevState) => {
+      if (this.state.heart >= 120) {
+        return {
+          water: prevState.water + 0.0008
+        }
+      } else {
+          return {
+            water: initialState.water
+          }
+        }
+      })
+    }
 
   onStepsChange = (e) => {
     this.setState({
       ...this.state,
       steps: e.target.value
     })
+
+    this.setState((prevState) => {
+      if (this.state.steps >= 10000) {
+        return {
+          water: prevState.water + 0.00002
+        }
+      } else {
+        return {
+          water: initialState.water
+        }
+      }
+    })
   }
+
 
   onTemperatureChange = (e) => {
     this.setState({
       ...this.state,
       temperature: e.target.value
     })
-  }
 
-  calculateWater = () => {
-    let drink = this.state.water;
-    if (this.state.temperature > 20) {
-      this.setState({
-        ...this.state,
-        water: drink + 0.002
-      })  
-    } else if (this.state.heart > 120) {
-        this.setState({
-          ...this.state,
-          water: drink + 0.0008
-        })
-      } else if (this.state.steps > 10000) {
-          this.setState({
-            ...this.state,
-            water: drink + 0.00002
-          })
+    this.setState((prevState) => {
+      if (this.state.temperature >= 20) {
+        return {
+          water: prevState.water + 0.002
         }
-  }
+      } else {
+          return {
+            water: initialState.water
+          };
+        }
+      })  
+    }
+    
 
   render () {
     return (
