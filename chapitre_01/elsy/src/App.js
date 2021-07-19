@@ -12,78 +12,51 @@ const heartMax = 180;
 const stepsMin = 0;
 const stepsMax = 50000;
 
-const initialState = {
-  water: 1.5,
-  heart: 120,
-  temperature: -10,
-  steps: 3000
-}
 
 class App extends React.Component {
 
   constructor() {
     super();
-    this.state = initialState
+    this.state = {
+      water: 1.5,
+      heart: 120,
+      temperature: -10,
+      steps: 3000
+    }
   }
-
 
   onHeartChange = (e) => {
-    this.setState((prevState) => ({
-        ...prevState,
-        heart: e.target.value
+    this.setState((prevState) => this.calculateWater({
+      ...prevState,
+      heart: e.target.value
     }));
-
-    if (this.state.heart >= 120) {
-      this.setState((prevState) => ({
-        ...prevState,
-        water: prevState.water + 0.0008
-      }));
-    } else if (this.state.water > 1.5){
-      this.setState((prevState) => ({
-        ...prevState,
-        water: initialState.water
-      }));
-    }
-
   }
 
+
   onStepsChange = (e) => {
-    this.setState((prevState) => ({
+    this.setState((prevState) => this.calculateWater({
       ...prevState,
       steps: e.target.value
     }));
-
-    if (this.state.steps >= 10000) {
-      this.setState((prevState) => ({
-        ...prevState,
-        water: prevState.water + 0.00002
-      }));
-    } else if (this.state.water > 1.5){
-      this.setState((prevState) => ({
-        ...prevState,
-        water: initialState.water
-      }));
-    }
   }
 
 
   onTemperatureChange = (e) => {
-    this.setState((prevState) => ({
+    this.setState((prevState) => this.calculateWater({
       ...prevState,
       temperature: e.target.value
-    }))
+    }));
+  }
 
-    if (this.state.temperature >= 20) {
-      this.setState((prevState) => ({
-        ...prevState,
-        water: prevState.water + 0.02
-      }));
-    } else if (this.state.water > 1.5){
-      this.setState((prevState) => ({
-        ...prevState,
-        water: initialState.water
-      }));
-    } 
+
+  calculateWater = (state) => {
+    const temperatureIncrement = 0.02 * Math.max(state.temperature - 20, 0);
+    const heartIncrement = 0.0008 * Math.max(state.heart - 120, 0);
+    const stepsIncrement = 0.00002 * Math.max(state.steps - 10000, 0);
+    return {
+      ...state,
+      water: 1.5 + temperatureIncrement + heartIncrement + stepsIncrement
+    }
   }
 
 
