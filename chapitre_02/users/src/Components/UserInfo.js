@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 
 class UserInfo extends React.Component {
 
@@ -7,7 +6,6 @@ class UserInfo extends React.Component {
         return (
             <div>
                 <p>{this.props.name} : {this.props.email}, {this.props.website}</p>
-
             </div>
         )
     }

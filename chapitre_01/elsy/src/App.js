@@ -18,7 +18,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      water: 0,
+      water: 1.5,
       heart: 120,
       temperature: -10,
       steps: 3000
@@ -44,6 +44,26 @@ class App extends React.Component {
       ...this.state,
       temperature: e.target.value
     })
+  }
+
+  calculateWater = () => {
+    let drink = this.state.water;
+    if (this.state.temperature > 20) {
+      this.setState({
+        ...this.state,
+        water: drink + 0.002
+      })  
+    } else if (this.state.heart > 120) {
+        this.setState({
+          ...this.state,
+          water: drink + 0.0008
+        })
+      } else if (this.state.steps > 10000) {
+          this.setState({
+            ...this.state,
+            water: drink + 0.00002
+          })
+        }
   }
 
   render () {
