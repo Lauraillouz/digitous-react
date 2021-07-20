@@ -21,7 +21,7 @@ class App extends React.Component {
       water: 1.5,
       heart: 120,
       temperature: -10,
-      steps: 3000
+      steps: 1000
     }
   }
 

@@ -3,14 +3,6 @@ import React from "react";
 const steps = document.querySelector(".steps");
 
 class Box extends React.Component {
-    
-    constructor() {
-        super()
-        this.state = {
-
-        }
-    }
-
 
     render() {
 
