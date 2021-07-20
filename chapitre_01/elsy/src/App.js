@@ -69,7 +69,7 @@ class App extends React.Component {
           <Box icon="local_drink" color="#3A85FF" value={this.state.water} unit="L" /> 
 
           {/* STEPS */}
-          <Box icon="directions_walk" color="black" min={stepsMin} max={stepsMax} value={this.state.steps} onChange={this.onStepsChange} unit="steps" />
+          <Box className="steps" icon="directions_walk" color="black" min={stepsMin} max={stepsMax} value={this.state.steps} onChange={this.onStepsChange} unit="steps" />
 
           {/* HEART */}
           <Box icon="favorite" color="red" min={heartMin} max={heartMax} value={this.state.heart} onChange={this.onHeartChange} unit="bpm" />
