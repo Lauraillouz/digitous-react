@@ -26,7 +26,7 @@ class App extends React.Component {
       case "add":
         return <Add addItem={this.addItem} />;
       case "list":
-        return <List />;
+        return <List items={this.state.items} />;
       case "pay":
         return <Pay />;
     }
@@ -56,9 +56,11 @@ class App extends React.Component {
   addItem = (name, price)  => {
     this.setState((prevState) => ({
       ...prevState,
-      items: [{
-        name: name,
-        price: price
+      items: [
+        ...prevState.items,
+        {
+          name: name,
+          price: price
       }],
     }))
 
