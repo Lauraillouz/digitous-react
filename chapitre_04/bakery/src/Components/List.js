@@ -10,9 +10,9 @@ class List extends React.Component {
 
     return (
       <div>
-          <ul>
+          <ul className="mt-3 list-group list-group-flush">
             {this.props.items.map((item) => {
-                return <li>{item.name} : {item.price}</li> 
+                return <li className="list-group-item">{item.name} : {item.price}</li> 
             })}  
           </ul>
           

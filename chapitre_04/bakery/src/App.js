@@ -70,7 +70,7 @@ class App extends React.Component {
   render() {
     console.log(this.state.items);
     return (
-      <div>
+      <div className="container p-5">
         <div>
           <Button isSelected={this.state.activeTab === "add"} onClick={this.selectAdd} children="Add" />
 
