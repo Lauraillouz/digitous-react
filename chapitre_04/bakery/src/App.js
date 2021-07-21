@@ -16,7 +16,7 @@ class App extends React.Component {
     super();
 
     this.state = {
-      activeTab: "pay",
+      activeTab: "add",
       items: []
     }
   }
@@ -32,16 +32,37 @@ class App extends React.Component {
     }
   }
 
+  selectAdd = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      activeTab: "add"
+    }))
+  }
+
+  selectList = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      activeTab: "list"
+    }))
+  }
+
+  selectPay = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      activeTab: "pay"
+    }))
+  }
+
 
   render() {
     return (
       <div>
         <div>
-          <Button isSelected={this.state.activeTab === "add"} onClick="" children="Add" />
+          <Button isSelected={this.state.activeTab === "add"} onClick={this.selectAdd} children="Add" />
 
-          <Button isSelected={this.state.activeTab === "list"} onClick="" children="List" />
+          <Button isSelected={this.state.activeTab === "list"} onClick={this.selectList} children="List" />
 
-          <Button isSelected={this.state.activeTab === "pay"} onClick="" children="Pay" />
+          <Button isSelected={this.state.activeTab === "pay"} onClick={this.selectPay} children="Pay" />
 
         </div>
 
