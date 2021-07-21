@@ -24,7 +24,7 @@ class App extends React.Component {
   renderTab = () => {
     switch(this.state.activeTab) {
       case "add":
-        return <Add />;
+        return <Add addItem={this.addItem} />;
       case "list":
         return <List />;
       case "pay":
@@ -53,8 +53,20 @@ class App extends React.Component {
     }))
   }
 
+  addItem = (name, price)  => {
+    this.setState((prevState) => ({
+      ...prevState,
+      items: [{
+        name: name,
+        price: price
+      }],
+    }))
+
+  }
+
 
   render() {
+    console.log(this.state.items);
     return (
       <div>
         <div>
