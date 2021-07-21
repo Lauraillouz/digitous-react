@@ -28,7 +28,7 @@ class App extends React.Component {
       case "list":
         return <List items={this.state.items} />;
       case "pay":
-        return <Pay />;
+        return <Pay  />;
     }
   }
 

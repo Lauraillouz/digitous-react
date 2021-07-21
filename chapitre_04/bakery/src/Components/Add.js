@@ -28,8 +28,8 @@ class Add extends React.Component {
         return (
         <div>
             <input className="form-control mt-3 mb-3" type="text" onChange={this.updateProductName}/>
-            <input type="range" min={1} max={10} onChange={this.updatePrice} />
-            <label type="text"></label>
+            <input for="texLabel" type="range" min={1} max={10} value={this.state.price}onChange={this.updatePrice} />
+            <label className="ms-3" id="texLabel" type="text">{this.state.price} €</label>
             <button className="btn btn-dark ms-3"onClick={() => this.props.addItem(this.state.productName, this.state.price)} >Add</button>
 
         </div>

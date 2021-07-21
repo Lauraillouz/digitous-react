@@ -10,10 +10,10 @@ class List extends React.Component {
 
     return (
       <div>
-          <ul className="mt-3 list-group list-group-flush">
+          <ul className="mt-3 list-group">
             {this.props.items.map((item) => {
-                return <li className="list-group-item">{item.name} : {item.price}€</li> 
-            }).sort((a, b) => a - b).reverse()}  
+                return <li className="list-group-item d-flex justify-content-between align-items-center">{item.name} <span className="badge bg-primary badge-pill">{item.price}€ </span></li> 
+            }).sort().reverse()}  
           </ul>
           
       </div>
