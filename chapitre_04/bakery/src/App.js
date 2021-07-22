@@ -17,7 +17,8 @@ class App extends React.Component {
 
     this.state = {
       activeTab: "add",
-      items: []
+      items: [],
+      subTotal: 0
     }
   }
 
@@ -28,7 +29,7 @@ class App extends React.Component {
       case "list":
         return <List items={this.state.items} />;
       case "pay":
-        return <Pay  />;
+        return <Pay items={this.state.items} subTotal={this.state.subTotal} />;
     }
   }
 
@@ -54,6 +55,7 @@ class App extends React.Component {
   }
 
   addItem = (name, price)  => {
+    let newSubTotal = parseInt(price) + this.state.subTotal
     this.setState((prevState) => ({
       ...prevState,
       items: [
@@ -62,13 +64,13 @@ class App extends React.Component {
           name: name,
           price: price
       }],
+      subTotal: newSubTotal
     }))
 
   }
 
 
   render() {
-    console.log(this.state.items);
     return (
       <div className="container p-5">
         <div>
