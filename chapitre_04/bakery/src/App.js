@@ -8,6 +8,7 @@ import Add from "./Components/Add";
 import List from "./Components/List";
 import Pay from "./Components/Pay";
 import Button from "./Components/Button";
+import Card from "./Components/Card";
 
 
 class App extends React.Component {
@@ -29,7 +30,7 @@ class App extends React.Component {
       case "list":
         return <List items={this.state.items} />;
       case "pay":
-        return <Pay items={this.state.items} subTotal={this.state.subTotal} />;
+        return <Pay items={this.state.items} subTotal={this.state.subTotal} /> ;
     }
   }
 
@@ -74,11 +75,11 @@ class App extends React.Component {
     return (
       <div className="container p-5">
         <div>
-          <Button isSelected={this.state.activeTab === "add"} onClick={this.selectAdd} children="Add" />
+          <Button isSelected={this.state.activeTab === "add"} onClick={this.selectAdd}>Add</Button>
 
-          <Button isSelected={this.state.activeTab === "list"} onClick={this.selectList} children="List" />
+          <Button isSelected={this.state.activeTab === "list"} onClick={this.selectList}>List</Button> 
 
-          <Button isSelected={this.state.activeTab === "pay"} onClick={this.selectPay} children="Pay" />
+          <Button isSelected={this.state.activeTab === "pay"} onClick={this.selectPay}>Pay</Button>
 
         </div>
 

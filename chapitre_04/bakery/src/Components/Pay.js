@@ -1,6 +1,6 @@
 import React from "react";
 
-/* import List from "./Components/List"; */
+import Card from "./Card";
 
 class Pay extends React.Component {
 
@@ -30,6 +30,8 @@ class Pay extends React.Component {
             <li className="list-group-item">Total: </li>
           </ul>
         </div>
+
+        <Card productName="croissant"/>
           
       </div>
     )
