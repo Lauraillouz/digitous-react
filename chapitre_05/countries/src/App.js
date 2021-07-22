@@ -1,11 +1,11 @@
 import React from "react";
 
+// Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"
+
 //Components
 import Button from "./Components/Button";
-
-const style = {
-  maxWidth: 200
-}
+import Card from "./Components/Card";
 
 class App extends React.Component {
 
@@ -55,17 +55,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Button onClick={() => this.getCountry("france")}>France</Button>
-        <Button onClick={() => this.getCountry("brazil")}>Brazil</Button>
-        <Button onClick={() => this.getCountry("croatia")}>Croatia</Button>
-
-        <div>
-          <img style={style} src={this.state.flag} alt={`drapeau de ${this.state.country}`}/>
-          <p>Country: {this.state.name}</p>
-          <p>Capital: {this.state.capital}</p>
-          <p>Region: {this.state.region}</p>
-          <p>Population: {this.state.population}</p>
+        <div className="container d-flex justify-content-between">
+          <Button onClick={() => this.getCountry("france")}>France</Button>
+          <Button onClick={() => this.getCountry("brazil")}>Brazil</Button>
+          <Button onClick={() => this.getCountry("croatia")}>Croatia</Button>
         </div>
+
+        <Card name={this.state.name} capital={this.state.capital} region={this.state.region} population={this.state.population} flag={this.state.flag} />
       
       </div>
 
