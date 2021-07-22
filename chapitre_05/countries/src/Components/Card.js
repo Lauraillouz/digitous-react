@@ -12,11 +12,9 @@ class Card extends React.Component {
         return (
         <div className="container">
             <div className="card">
-                <div className="card-body d-flex justify-content-center">
-                    <div className="me-3">
-                        <img style={style} src={this.props.flag} alt={`drapeau de ${this.props.name}`}/>
-                    </div>
-                    <div>
+                <div className="card-body">
+                    <div className="me-3 d-flex align-items-center flex-column">
+                        <img className="mb-3" style={style} src={this.props.flag} alt={`drapeau de ${this.props.name}`}/>
                         <p>Country: {this.props.name}</p>
                         <p>Capital: {this.props.capital}</p>
                         <p>Region: {this.props.region}</p>

@@ -22,15 +22,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("https://restcountries.eu/rest/v2/name/france")
+    fetch("http://localhost:8000/france")
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         this.setState({
-          name: data[0].name,
-          capital: data[0].capital,
-          flag: data[0].flag,
-          population: data[0].population,
-          region: data[0].region
+          name: data.data[0].name,
+          capital: data.data[0].capital,
+          flag: data.data[0].flag,
+          population: data.data[0].population,
+          region: data.data[0].region
         })
       })
   }
