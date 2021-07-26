@@ -5,21 +5,21 @@ import Card from "./Card";
 
 import { v4 as uuid } from "uuid";
 
+const initialState = {
+  basket: [],
+  total: 0,
+  totalTVA: 0,
+  totalEcoTax: 0,
+  totalTTC: 0,
+};
+
 class Pay extends React.Component {
   constructor() {
     super();
-    this.state = {
-      basket: [],
-      total: 0,
-      totalTVA: 0,
-      totalEcoTax: 0,
-      totalTTC: 0,
-    };
+    this.state = initialState;
   }
 
   handleSelect = (name, price) => {
-    console.log(name, price);
-
     // Calcul du total
     let newTotal = parseInt(price) + this.state.total;
 
@@ -30,7 +30,6 @@ class Pay extends React.Component {
     let newTotalTVA = (newTotal * 20) / 100;
 
     this.setState((prevState) => ({
-      ...prevState,
       basket: [
         ...prevState.basket,
         {
@@ -42,6 +41,12 @@ class Pay extends React.Component {
       totalEcoTax: newTotalEcoTax,
       totalTVA: newTotalTVA,
       totalTTC: newTotal + newTotalEcoTax + newTotalTVA,
+    }));
+  };
+
+  handleClear = () => {
+    this.setState(() => ({
+      ...initialState,
     }));
   };
 
@@ -79,6 +84,13 @@ class Pay extends React.Component {
             </li>
           </ul>
         </div>
+
+        <button className="btn btn-dark ms-3 mt-3" onClick={this.handleClear}>
+          Clear
+        </button>
+        <button className="btn btn-success ms-3 mt-3" onClick={this.handleSave}>
+          Save
+        </button>
       </div>
     );
   }

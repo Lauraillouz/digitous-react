@@ -20,6 +20,7 @@ class List extends React.Component {
                       </span>
                     </li>
                     <button
+                      className="btn btn-dark"
                       type="button"
                       onClick={() => {
                         this.props.deleteItem(item.id);
