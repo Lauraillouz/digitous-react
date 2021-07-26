@@ -25,7 +25,7 @@ class App extends React.Component {
       case "add":
         return <Add addItem={this.addItem} />;
       case "list":
-        return <List items={this.state.items} />;
+        return <List items={this.state.items} deleteItem={this.deleteItem} />;
       case "pay":
         return <Pay items={this.state.items} subTotal={this.state.subTotal} />;
       default:
@@ -60,10 +60,20 @@ class App extends React.Component {
       items: [
         ...prevState.items,
         {
+          id: this.state.items.length,
           name: name,
           price: price,
         },
       ],
+    }));
+  };
+
+  deleteItem = (id) => {
+    let newItems = this.state.items.filter((item) => item.id !== id);
+
+    this.setState((prevState) => ({
+      ...prevState,
+      items: newItems,
     }));
   };
 

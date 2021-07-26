@@ -1,5 +1,4 @@
 import React from "react";
-import { v4 as uuid } from "uuid";
 
 class List extends React.Component {
   render() {
@@ -13,13 +12,21 @@ class List extends React.Component {
               .sort((a, b) => b.price - a.price)
               .map((item) => {
                 return (
-                  <div key={uuid()}>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                  <div key={item.id} className="d-flex">
+                    <li className="list-group-item d-flex justify-content-between align-items-center col-9">
                       {item.name}{" "}
                       <span className="badge bg-primary badge-pill">
                         {item.price}€{" "}
                       </span>
                     </li>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        this.props.deleteItem(item.id);
+                      }}
+                    >
+                      Delete
+                    </button>
                   </div>
                 );
               })}
