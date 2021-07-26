@@ -19,6 +19,30 @@ class Pay extends React.Component {
 
   handleSelect = (name, price) => {
     console.log(name, price);
+
+    // Calcul du total
+    let newTotal = parseInt(price) + this.state.total;
+
+    // Calcul EcoTax
+    let newTotalEcoTax = (this.state.basket.length + 1) * 0.03;
+
+    // Calcul TVA
+    let newTotalTVA = (newTotal * 20) / 100;
+
+    this.setState((prevState) => ({
+      ...prevState,
+      basket: [
+        ...prevState.basket,
+        {
+          name: name,
+          price: price,
+        },
+      ],
+      total: newTotal,
+      totalEcoTax: newTotalEcoTax,
+      totalTVA: newTotalTVA,
+      totalTTC: newTotal + newTotalEcoTax + newTotalTVA,
+    }));
   };
 
   render() {
@@ -43,16 +67,13 @@ class Pay extends React.Component {
 
         <div>
           <ul className="mt-3 list-group list-group-flush">
-            <li className="list-group-item">
-              Sous-Total: {this.props.subTotal}€
-            </li>
+            <li className="list-group-item">Sous-Total: {this.state.total}€</li>
             <li className="list-group-item">
               Total TVA: {this.state.totalTVA}
             </li>
             <li className="list-group-item">
               Eco tax: {this.state.totalEcoTax}
             </li>
-            <li className="list-group-item">Total: {this.state.totalEcoTax}</li>
             <li className="list-group-item">
               Total TTC: {this.state.totalTTC}
             </li>

@@ -55,7 +55,6 @@ class App extends React.Component {
   };
 
   addItem = (name, price) => {
-    let newSubTotal = parseInt(price) + this.state.subTotal;
     this.setState((prevState) => ({
       ...prevState,
       items: [
@@ -65,7 +64,6 @@ class App extends React.Component {
           price: price,
         },
       ],
-      subTotal: newSubTotal,
     }));
   };
 
