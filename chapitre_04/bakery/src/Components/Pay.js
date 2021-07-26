@@ -88,7 +88,10 @@ class Pay extends React.Component {
         <button className="btn btn-dark ms-3 mt-3" onClick={this.handleClear}>
           Clear
         </button>
-        <button className="btn btn-success ms-3 mt-3" onClick={this.handleSave}>
+        <button
+          className="btn btn-success ms-3 mt-3"
+          onClick={() => this.props.handleSave(this.state)}
+        >
           Save
         </button>
       </div>

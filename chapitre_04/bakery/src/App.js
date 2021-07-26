@@ -8,6 +8,7 @@ import Add from "./Components/Add";
 import List from "./Components/List";
 import Pay from "./Components/Pay";
 import Button from "./Components/Button";
+import PastOrders from "./Components/PastOrders";
 
 class App extends React.Component {
   constructor() {
@@ -17,6 +18,7 @@ class App extends React.Component {
       activeTab: "add",
       items: [],
       subTotal: 0,
+      payState: [],
     };
   }
 
@@ -27,7 +29,15 @@ class App extends React.Component {
       case "list":
         return <List items={this.state.items} deleteItem={this.deleteItem} />;
       case "pay":
-        return <Pay items={this.state.items} subTotal={this.state.subTotal} />;
+        return (
+          <Pay
+            items={this.state.items}
+            subTotal={this.state.subTotal}
+            handleSave={this.handleSave}
+          />
+        );
+      case "pastOrders":
+        return <PastOrders payState={this.state.payState} />;
       default:
         return <p>404 Not Found</p>;
     }
@@ -51,6 +61,12 @@ class App extends React.Component {
     this.setState((prevState) => ({
       ...prevState,
       activeTab: "pay",
+    }));
+  };
+  selectPastOrders = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      activeTab: "pastOrders",
     }));
   };
 
@@ -77,6 +93,13 @@ class App extends React.Component {
     }));
   };
 
+  handleSave = (payState) => {
+    this.setState((prevState) => ({
+      ...prevState,
+      payState: [...prevState.payState, payState],
+    }));
+  };
+
   render() {
     return (
       <div className="container p-5">
@@ -100,6 +123,13 @@ class App extends React.Component {
             onClick={this.selectPay}
           >
             Pay
+          </Button>
+
+          <Button
+            isSelected={this.state.activeTab === "pastOrders"}
+            onClick={this.selectPastOrders}
+          >
+            Past Orders
           </Button>
         </div>
 
