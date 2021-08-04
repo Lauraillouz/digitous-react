@@ -29,7 +29,7 @@ class Popular extends React.Component {
   render() {
     return (
       <div>
-        <h1>Popular</h1>
+        <h1 className="m-4">Popular</h1>
         <Card movies={this.state.movies} />
       </div>
     );

@@ -4,19 +4,20 @@ class Card extends React.Component {
   render() {
     console.log(this.props.movies);
     return (
-      <div>
+      <div className="d-flex flex-wrap justify-content-center">
         {this.props.movies.map((movie) => {
           return (
-            <div key={movie.id}>
-              <div className="d-flex">
-                <div>
-                  <img
-                    src={`http://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                    alt={movie.title}
-                  ></img>
+            <div className="m-4" key={movie.id}>
+              <div className="card" style={{ width: "18rem", height: "50rem" }}>
+                <img
+                  className="card-img-top"
+                  src={`http://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                  alt={movie.title}
+                ></img>
+                <div className="card-body">
                   <p>{movie.title}</p>
                   <p>{movie.release_date}</p>
-                  <p>{movie.overview}</p>
+                  <p style={{ fontSize: "0.75rem" }}>{movie.overview}</p>
                 </div>
               </div>
             </div>
