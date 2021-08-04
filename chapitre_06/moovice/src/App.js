@@ -7,10 +7,10 @@ import Weekly from "./views/Weekly";
 import WeeklyBattle from "./views/WeeklyBattle";
 import Popular from "./views/Popular";
 import PopularBattle from "./views/PopularBattle";
-
+import Favorites from "./views/Favorites";
 // CSS
 import "./App.css";
-import Favorites from "./views/Favorites";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends React.Component {
   render() {
