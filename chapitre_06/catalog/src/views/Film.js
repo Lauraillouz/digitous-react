@@ -3,16 +3,19 @@ import React from "react";
 class Film extends React.Component {
   render() {
     return (
-      <div>
+      <div className="main">
         {this.props.data
           .filter((film) => film.id.toString() === this.props.match.params.id)
           .map((film) => {
             return (
-              <div key={film.id}>
-                <div>
-                  <h1>{film.title}</h1>
-                  <h3>by {film.director}</h3>
-                  <h5>
+              <div className="flexColumn" key={film.id}>
+                <div className="flexNoWrap">
+                  <div className="titleWithDirector">
+                    <h1 className="movieTitle">{film.title}</h1>
+                    <h3>by {film.director}</h3>
+                  </div>
+
+                  <h5 className="marginBottom">
                     Casting:{" "}
                     {film.stars.map((star) => {
                       return film.stars[star.length - 1]
@@ -22,9 +25,13 @@ class Film extends React.Component {
                   </h5>
                 </div>
 
-                <img src={film.image} alt={film.title}></img>
-                <p>Synospis:</p>
-                <p>{film.description}</p>
+                <img
+                  className="resizeImage"
+                  src={film.image}
+                  alt={film.title}
+                ></img>
+                <p className="marginTop marginBottom">Synospis:</p>
+                <p className="restrict">{film.description}</p>
               </div>
             );
           })}

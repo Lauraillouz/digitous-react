@@ -1,0 +1,68 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* General settings */
+/* @font-face {
+  font-family: Inconsolata;
+  src: url("../public/fonts/Inconsolata/Inconsolata-VariableFont_wdth\,wght.ttf");
+} */
+.main {
+  background: linear-gradient(
+    120deg,
+    rgba(3, 3, 3, 1) 0%,
+    rgba(87, 87, 87, 0.21) 100%
+  );
+  padding: 50px 50px 200px 50px;
+  color: lightgray;
+  font-family: sans-serif;
+}
+h1 {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* Home */
+.flex {
+  display: flex;
+}
+.flexWrap {
+  flex-wrap: wrap;
+}
+.link {
+  text-decoration: none;
+  color: white;
+  display: block;
+  text-align: center;
+}
+.link:hover {
+  color: lightgray;
+  font-weight: bold;
+}
+.marginBottom {
+  margin-bottom: 10px;
+}
+.spaceAround {
+  margin: 30px;
+}
+
+/* Film */
+.titleWithDirector {
+  margin-bottom: 20px;
+}
+.marginTop {
+  margin-top: 30px;
+}
+.restrict {
+  max-width: 500px;
+}
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.resizeImage {
+  max-width: 300px;
+}
