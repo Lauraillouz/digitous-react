@@ -26,11 +26,22 @@ class PopularBattle extends React.Component {
       });
   };
 
-  handleClick = () => {
-    this.setState((prevState) => ({
-      ...prevState,
-      currentBattle: prevState.currentBattle + 2,
-    }));
+  handleClick = (movie) => {
+    if (this.state.currentBattle === this.state.movies.length - 2) {
+      alert("No more movies to vote for!");
+    } else {
+      this.setState((prevState) => ({
+        ...prevState,
+        currentBattle: prevState.currentBattle + 2,
+      }));
+    }
+    this.saveMovie(movie);
+  };
+
+  saveMovie = (movie) => {
+    let storedMovie = JSON.parse(localStorage.getItem("favorites") || "[]");
+    storedMovie.push(movie.id);
+    localStorage.setItem("favorites", JSON.stringify(storedMovie));
   };
 
   render() {
@@ -42,7 +53,11 @@ class PopularBattle extends React.Component {
             .slice(this.state.currentBattle, this.state.currentBattle + 2)
             .map((movie) => {
               return (
-                <div className="m-4" onClick={this.handleClick} key={movie.id}>
+                <div
+                  className="m-4"
+                  onClick={() => this.handleClick(movie)}
+                  key={movie.id}
+                >
                   <div
                     className="card"
                     style={{ width: "18rem", height: "50rem" }}
