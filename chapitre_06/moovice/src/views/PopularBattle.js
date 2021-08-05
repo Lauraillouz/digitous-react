@@ -9,7 +9,6 @@ class PopularBattle extends React.Component {
     this.state = {
       movies: [],
       currentBattle: 0,
-      comparedMovies: [],
     };
   }
 
@@ -27,15 +26,11 @@ class PopularBattle extends React.Component {
       });
   };
 
-  setBattle = () => {
-    let allMovies = this.state.movies.length;
-    for (let i = 0; i < allMovies; i++) {
-      this.setState((prevState) => ({
-        ...prevState,
-        currentBattle: prevState.currentBattle + 1,
-      }));
-      return allMovies[i] && allMovies[i + 1];
-    }
+  handleClick = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      currentBattle: prevState.currentBattle + 2,
+    }));
   };
 
   render() {
@@ -43,27 +38,29 @@ class PopularBattle extends React.Component {
       <div>
         <h1 className="m-4">Popular Battle</h1>
         <div className="d-flex flex-wrap justify-content-center">
-          {this.state.movies.slice(0, 2).map((movie) => {
-            return (
-              <div className="m-4" key={movie.id}>
-                <div
-                  className="card"
-                  style={{ width: "18rem", height: "50rem" }}
-                >
-                  <img
-                    className="card-img-top"
-                    src={`http://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                    alt={movie.title}
-                  ></img>
-                  <div className="card-body">
-                    <p style={{ fontWeight: "bold" }}>{movie.title}</p>
-                    <p>{movie.release_date}</p>
-                    <p style={{ fontSize: "0.75rem" }}>{movie.overview}</p>
+          {this.state.movies
+            .slice(this.state.currentBattle, this.state.currentBattle + 2)
+            .map((movie) => {
+              return (
+                <div className="m-4" onClick={this.handleClick} key={movie.id}>
+                  <div
+                    className="card"
+                    style={{ width: "18rem", height: "50rem" }}
+                  >
+                    <img
+                      className="card-img-top"
+                      src={`http://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                      alt={movie.title}
+                    ></img>
+                    <div className="card-body">
+                      <p style={{ fontWeight: "bold" }}>{movie.title}</p>
+                      <p>{movie.release_date}</p>
+                      <p style={{ fontSize: "0.75rem" }}>{movie.overview}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
     );
