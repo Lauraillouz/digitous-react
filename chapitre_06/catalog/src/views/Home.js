@@ -11,10 +11,7 @@ class Home extends React.Component {
             return (
               <div key={film.id}>
                 <div className="spaceAround">
-                  <Link
-                    className="link marginBottom"
-                    to={`/film/${this.props.id}`}
-                  >
+                  <Link className="link marginBottom" to={`/film/${film.id}`}>
                     {film.title}
                   </Link>
 
