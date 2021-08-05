@@ -15,7 +15,7 @@ class Card extends React.Component {
                   alt={movie.title}
                 ></img>
                 <div className="card-body">
-                  <p>{movie.title}</p>
+                  <p style={{ fontWeight: "bold" }}>{movie.title}</p>
                   <p>{movie.release_date}</p>
                   <p style={{ fontSize: "0.75rem" }}>{movie.overview}</p>
                 </div>
