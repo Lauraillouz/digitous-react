@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 // Components
 import Home from "./views/Home";
@@ -12,22 +11,20 @@ import Favorites from "./views/Favorites";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-class App extends React.Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/weekly" component={Weekly} />
-          <Route exact path="/weekly-battle" component={WeeklyBattle} />
-          <Route exact path="/popular" component={Popular} />
-          <Route exact path="/popular-battle" component={PopularBattle} />
-          <Route exact path="/favorites" component={Favorites} />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
-}
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/weekly" component={Weekly} />
+        <Route exact path="/weekly-battle" component={WeeklyBattle} />
+        <Route exact path="/popular" component={Popular} />
+        <Route exact path="/popular-battle" component={PopularBattle} />
+        <Route exact path="/favorites" component={Favorites} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default App;
