@@ -13,9 +13,8 @@ const Popular = () => {
       fetch(`${URL}`)
         .then((res) => res.json())
         .then((data) => {
-          setMovies({
-            movies: data.results,
-          });
+          console.log(data.results);
+          setMovies(data.results);
         });
     };
     getMovies();

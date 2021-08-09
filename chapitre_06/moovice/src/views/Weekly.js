@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // Component
 import Card from "../components/Card";
 
@@ -7,43 +7,33 @@ import moment from "moment";
 
 const API_KEY = "446011991554d3f0bb6bdf42b91d408e";
 
-class Weekly extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      movies: [],
-    };
-  }
+const Weekly = () => {
+  const [movies, setMovies] = useState([]);
 
-  componentDidMount() {
-    this.getMovies();
-  }
+  useEffect(() => {
+    const getMovies = () => {
+      let TODAY = moment().format("YYYY-MM-DD");
+      console.log(TODAY);
 
-  getMovies = () => {
-    let TODAY = moment().format("YYYY-MM-DD");
-    console.log(TODAY);
-
-    let LAST_WEEK = moment().subtract(7, "days").format("YYYY-MM-DD");
-    console.log(LAST_WEEK);
-    fetch(
-      `http://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${LAST_WEEK}&primary_release_date.lte=${TODAY}&api_key=${API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        this.setState({
-          movies: data.results,
+      let LAST_WEEK = moment().subtract(7, "days").format("YYYY-MM-DD");
+      console.log(LAST_WEEK);
+      fetch(
+        `http://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${LAST_WEEK}&primary_release_date.lte=${TODAY}&api_key=${API_KEY}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setMovies(data.results);
         });
-      });
-  };
+    };
+    getMovies();
+  });
 
-  render() {
-    return (
-      <div>
-        <h1 className="m-4">Weekly</h1>
-        <Card movies={this.state.movies} />
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1 className="m-4">Weekly</h1>
+      <Card movies={movies} />
+    </div>
+  );
+};
 
 export default Weekly;
