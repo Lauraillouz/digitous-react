@@ -7,19 +7,26 @@ import Error404 from "./components/Error404";
 
 //CSS
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container-fluid">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
       <Switch>
         <Route exact path="/" component={Home} />
