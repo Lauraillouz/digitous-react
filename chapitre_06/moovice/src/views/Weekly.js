@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 // Component
 import Card from "../components/Card";
 
@@ -13,10 +13,8 @@ const Weekly = () => {
   useEffect(() => {
     const getMovies = () => {
       let TODAY = moment().format("YYYY-MM-DD");
-      console.log(TODAY);
 
       let LAST_WEEK = moment().subtract(7, "days").format("YYYY-MM-DD");
-      console.log(LAST_WEEK);
       fetch(
         `http://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${LAST_WEEK}&primary_release_date.lte=${TODAY}&api_key=${API_KEY}`
       )

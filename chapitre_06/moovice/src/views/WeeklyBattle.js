@@ -22,6 +22,7 @@ const WeeklyBattle = () => {
           setMovies(data.results);
         });
     };
+    getMovies();
   });
 
   const handleClick = (movie) => {
