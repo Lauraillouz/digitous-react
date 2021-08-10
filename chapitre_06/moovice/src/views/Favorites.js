@@ -26,16 +26,6 @@ const Favorites = () => {
     setFavIDs(JSON.parse(localStorage.getItem("favorites")));
   }, [favIDs]);
 
-  /*   componentDidMount() {
-    this.state.favIDs.forEach((id) => {
-      this.getMovie(id);
-    });
-  } */
-
-  /*   getStorage = () => {
-    return JSON.parse(localStorage.getItem("favorites"));
-  }; */
-
   return (
     <div>
       <h1 className="m-4">Favorites</h1>
