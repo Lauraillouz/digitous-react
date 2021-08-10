@@ -23,13 +23,13 @@ const WeeklyBattle = () => {
         });
     };
     getMovies();
-  });
+  }, []);
 
   const handleClick = (movie) => {
-    if (this.state.currentBattle === this.state.movies.length - 2) {
+    if (currentBattle === movies.length - 2) {
       alert("No more movies to vote for!");
     } else {
-      setCurrentBattle((prevState) => prevState.currentBattle + 2);
+      setCurrentBattle((prevState) => prevState + 2);
     }
     saveMovie(movie);
   };

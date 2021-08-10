@@ -10,21 +10,17 @@ const Favorites = () => {
     fetch(`http://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`)
       .then((res) => res.json())
       .then((movie) => {
-        setMovies((prevState) => (prevState.movies, movie));
+        setMovies((prevState) => [...prevState, movie]);
       });
   };
 
   useEffect(() => {
-    getMovie();
-  }, []);
-
-  useEffect(() => {
-    setFavIDs(favIDs.forEach((id) => getMovie(id)));
-  });
+    favIDs.forEach((id) => getMovie(id));
+  }, [favIDs]);
 
   useEffect(() => {
     setFavIDs(JSON.parse(localStorage.getItem("favorites")));
-  }, [favIDs]);
+  }, []);
 
   return (
     <div>
