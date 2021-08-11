@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { UserContext } from "../App";
 
 function randomNumber() {
   return Math.floor(Math.random() * 100) + 1;

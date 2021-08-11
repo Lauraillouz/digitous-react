@@ -10,7 +10,7 @@ import Error404 from "./components/Error404";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export const UserContext = createContext({ isLogged: false });
+export const UserContext = createContext();
 
 const App = () => {
   const [isLogged, setLogged] = useState(false);

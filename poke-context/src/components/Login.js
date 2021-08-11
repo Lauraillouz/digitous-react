@@ -1,13 +1,20 @@
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { UserContext } from "../App";
 
 const Login = () => {
+  const isLoggedState = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    isLoggedState.setLogged();
+  };
 
   return (
     <div className="bg-dark">
@@ -30,7 +37,15 @@ const Login = () => {
           type="password"
         />
         {errors.password && <p className="text-light">Password is required.</p>}
-        <input className="form-control bg-info" type="submit" />
+        {isLoggedState.isLogged ? (
+          <button type="button" className="btn btn-info" onClick={onSubmit}>
+            Se déconnecter
+          </button>
+        ) : (
+          <button type="button" className="btn btn-info" type="submit">
+            Se connecter
+          </button>
+        )}
       </form>
     </div>
   );
