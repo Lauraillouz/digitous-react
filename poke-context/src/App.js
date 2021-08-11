@@ -16,7 +16,11 @@ const App = () => {
   const [isLogged, setLogged] = useState(false);
 
   const setAuth = () => {
-    setLogged(true);
+    if (isLogged === true) {
+      setLogged(false);
+    } else {
+      setLogged(true);
+    }
   };
 
   return (
