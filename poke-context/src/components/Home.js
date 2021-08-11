@@ -42,7 +42,7 @@ const Home = () => {
       }
     };
     savePokemon();
-  }, [pokemon]);
+  }, [pokemon, pokemonState]);
 
   return (
     <div className="bg-dark text-light text-center container-fluid p-5">

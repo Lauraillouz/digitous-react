@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { useState, createContext, useContext } from "react";
+import { useState, createContext } from "react";
 
 // Components
 import Home from "./components/Home";
@@ -18,16 +18,16 @@ const App = () => {
   const [savedPokemons, setSavedPokemons] = useState([]);
 
   const setAuth = () => {
-    if (isLogged === false) {
-      setLogged(true);
-    } else {
-      setLogged(false);
-    }
+    isLogged ? setLogged(false) : setLogged(true);
   };
 
   const reset = () => {
     setLogged(false);
     setSavedPokemons([]);
+  };
+
+  const handleClick = () => {
+    isLogged ? reset() : setAuth();
   };
 
   return (
@@ -48,9 +48,18 @@ const App = () => {
                   </Link>
                 </li>
                 <li>
-                  <button className="btn btn-info ms-3" onClick={reset}>
-                    Log out
-                  </button>
+                  {isLogged ? (
+                    <button className="btn btn-info ms-3" onClick={handleClick}>
+                      Log out
+                    </button>
+                  ) : (
+                    <Link
+                      className="text-decoration-none text-dark"
+                      to="/login"
+                    >
+                      <button className="btn btn-info ms-3">Log in</button>
+                    </Link>
+                  )}
                 </li>
               </ul>
             </div>

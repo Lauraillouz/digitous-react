@@ -42,7 +42,7 @@ const Login = () => {
             Log out
           </button>
         ) : (
-          <button type="button" className="btn btn-info" type="submit">
+          <button type="button" className="btn btn-info" onClick={onSubmit}>
             Log in
           </button>
         )}
