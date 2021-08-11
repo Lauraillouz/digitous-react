@@ -15,20 +15,21 @@ const Login = () => {
       <form className="p-5" onSubmit={handleSubmit(onSubmit)}>
         <input
           className="form-control mb-3"
-          {...register("username")}
+          {...register("username", { required: true }, { maxLength: 15 })}
           type="text"
-          required
-          maxLength={15}
         />
-        {errors.username && <span>Username is required</span>}
+        {errors.username && <p className="text-light">Username is required.</p>}
         <input
           className="form-control mb-3"
-          {...register("password")}
+          {...register(
+            "password",
+            { required: true },
+            { minLength: 6 },
+            { maxLength: 15 }
+          )}
           type="password"
-          required
-          maxLength={6}
         />
-        {errors.password && <span>Password is required</span>}
+        {errors.password && <p className="text-light">Password is required.</p>}
         <input className="form-control bg-info" type="submit" />
       </form>
     </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { UserContext } from "../App";
 
 function randomNumber() {
   return Math.floor(Math.random() * 100) + 1;
@@ -11,17 +12,13 @@ const Home = () => {
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon/1")
       .then((res) => res.json())
-      .then((res) => {
-        setPokemon(res);
-      });
+      .then((res) => setPokemon(res));
   }, []);
 
   const getPokemon = () => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${randomNumber()}`)
       .then((res) => res.json())
-      .then((res) => {
-        setPokemon(res);
-      });
+      .then((res) => setPokemon(res));
   };
 
   return (
