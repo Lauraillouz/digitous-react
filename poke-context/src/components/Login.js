@@ -39,11 +39,11 @@ const Login = () => {
         {errors.password && <p className="text-light">Password is required.</p>}
         {isLoggedState.isLogged ? (
           <button type="button" className="btn btn-info" onClick={onSubmit}>
-            Se déconnecter
+            Log out
           </button>
         ) : (
           <button type="button" className="btn btn-info" type="submit">
-            Se connecter
+            Log in
           </button>
         )}
       </form>
