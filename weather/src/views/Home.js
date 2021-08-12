@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
+import { FavoritesContext } from "../App";
 
 const API_KEY = "671d055643a6eb59b7142a143bfc725d";
 
 const Home = () => {
+  const favoriteCitiesState = useContext(FavoritesContext);
+
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState("");
   const [temperature, setTemperature] = useState("");
+  const [id, setId] = useState(0);
 
   const {
     register,
@@ -24,14 +28,21 @@ const Home = () => {
         setCity(res.name);
         setTemperature(res.main.temp);
         setWeather(res.weather[0].description);
+        setId(res.id);
       });
   };
 
-  useEffect(() => {
-    console.log(city);
-    console.log(temperature);
-    console.log(weather);
-  }, [city, temperature, weather]);
+  const saveAsFavorite = () => {
+    if (
+      favoriteCitiesState.favoriteCities.length < 3 &&
+      !favoriteCitiesState.favoriteCities.includes(city)
+    ) {
+      favoriteCitiesState.setFavoriteCities((prev) => [
+        ...prev,
+        { city, weather, temperature, id },
+      ]);
+    }
+  };
 
   return (
     <div>
@@ -50,6 +61,9 @@ const Home = () => {
             Temperature: {Math.floor(parseInt(temperature) - 273.15) + " °C"}
           </p>
           <p>Weather: {weather}</p>
+          <button type="button" onClick={saveAsFavorite}>
+            Save as favorite
+          </button>
         </div>
       ) : null}
     </div>
