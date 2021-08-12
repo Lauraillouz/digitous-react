@@ -18,7 +18,7 @@ const App = () => {
   const [savedPokemons, setSavedPokemons] = useState([]);
 
   const setAuth = () => {
-    isLogged ? setLogged(false) : setLogged(true);
+    setLogged((prev) => !prev);
   };
 
   const reset = () => {
@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{ isLogged: isLogged, setLogged: setAuth }}>
+      <UserContext.Provider value={{ isLogged: isLogged, setAuth: setAuth }}>
         <PokemonContext.Provider value={{ savedPokemons, setSavedPokemons }}>
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container-fluid">

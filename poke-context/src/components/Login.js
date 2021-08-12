@@ -1,9 +1,13 @@
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
 
 const Login = () => {
   const isLoggedState = useContext(UserContext);
+
+  //const [userInfo, setUserInfo] = useState([]);
+  const [isChecked, setIsChecked] = useState(false);
+  const [username, setUsername] = useState("");
 
   const {
     register,
@@ -12,9 +16,19 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    isLoggedState.setLogged();
+    if (isChecked) {
+      localStorage.setItem("username", data.username);
+    }
+    isLoggedState.setAuth();
   };
+
+  const check = () => {
+    setIsChecked((prev) => !prev);
+  };
+
+  useEffect(() => {
+    setUsername(localStorage.getItem("username"));
+  }, []);
 
   return (
     <div className="bg-dark">
@@ -24,6 +38,7 @@ const Login = () => {
           className="form-control mb-3"
           {...register("username", { required: true }, { maxLength: 15 })}
           type="text"
+          value={username ? username : null}
         />
         {errors.username && <p className="text-light">Username is required.</p>}
         <input
@@ -37,15 +52,23 @@ const Login = () => {
           type="password"
         />
         {errors.password && <p className="text-light">Password is required.</p>}
-        {isLoggedState.isLogged ? (
-          <button type="button" className="btn btn-info" onClick={onSubmit}>
-            Log out
-          </button>
-        ) : (
-          <button type="button" className="btn btn-info" onClick={onSubmit}>
-            Log in
-          </button>
-        )}
+        <div>
+          <input
+            type="checkbox"
+            id="remember"
+            name="remember"
+            onClick={check}
+          />
+          <label className="text-white ms-2 mb-3" htmlFor="remember">
+            Remember me
+          </label>
+        </div>
+
+        <input
+          type="submit"
+          className="btn btn-info"
+          value={isLoggedState.isLogged ? "Log out" : "Log in"}
+        />
       </form>
     </div>
   );
