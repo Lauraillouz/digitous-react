@@ -1,14 +1,14 @@
 // React
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { createContext, useState } from "react";
-
 // Components
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 //Views
 import Home from "./views/Home";
 import Favorites from "./views/Favorites";
-
+// CSS
+import "./App.css";
 // Context
 export const FavoritesContext = createContext();
 

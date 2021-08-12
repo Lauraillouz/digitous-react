@@ -12,22 +12,27 @@ const CityCard = () => {
   };
 
   return (
-    <div>
+    <div className="mb-20 mt-30">
       {favoriteCitiesState.favoriteCities.map((favoriteCity) => {
         return (
           <div key={favoriteCity.id}>
-            <p>City: {favoriteCity.city}</p>
-            <p>
+            <p className="m-10 center">City: {favoriteCity.city}</p>
+            <hr></hr>
+            <p className="m-10 center">
               Temperature:
               {Math.floor(parseInt(favoriteCity.temperature) - 273.15) + " °C"}
             </p>
-            <p>Weather: {favoriteCity.weather}</p>
-            <button
-              type="button"
-              onClick={() => removeFromFavorites(favoriteCity.id)}
-            >
-              Remove from favorites
-            </button>
+            <hr></hr>
+            <p className="m-10 center">Weather: {favoriteCity.weather}</p>
+            <div className="flex justifyCenter">
+              <button
+                className="btn border center"
+                type="button"
+                onClick={() => removeFromFavorites(favoriteCity.id)}
+              >
+                Remove from favorites
+              </button>
+            </div>
           </div>
         );
       })}

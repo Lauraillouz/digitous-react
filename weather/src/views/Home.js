@@ -45,25 +45,37 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h2>Home</h2>
+    <div className="ms-10">
+      <h2 className="title p-20">Home</h2>
 
-      <form onSubmit={handleSubmit(getCity)}>
-        <input type="text" {...register("city", { required: true })} />
+      <form className="flex justifyCenter" onSubmit={handleSubmit(getCity)}>
+        <input
+          className="border"
+          type="text"
+          {...register("city", { required: true })}
+        />
         {errors.city && <p>City is required.</p>}
-        <input type="submit" />
+        <input className="btn border" type="submit" />
       </form>
 
       {city && weather && temperature ? (
-        <div>
-          <p>City: {city}</p>
-          <p>
+        <div className="mb-20 mt-30">
+          <p className="m-10 center">City: {city}</p>
+          <hr></hr>
+          <p className="m-10 center">
             Temperature: {Math.floor(parseInt(temperature) - 273.15) + " °C"}
           </p>
-          <p>Weather: {weather}</p>
-          <button type="button" onClick={saveAsFavorite}>
-            Save as favorite
-          </button>
+          <hr></hr>
+          <p className="m-10 center">Weather: {weather}</p>
+          <div className="flex justifyCenter">
+            <button
+              className="btn border center"
+              type="button"
+              onClick={saveAsFavorite}
+            >
+              Save as favorite
+            </button>
+          </div>
         </div>
       ) : null}
     </div>

@@ -3,12 +3,16 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <nav>
-      <ul>
+      <ul className="navWrapper p-20 flex">
         <li>
-          <Link to="/">Accueil</Link>
+          <Link className="navLink" to="/">
+            Accueil
+          </Link>
         </li>
         <li>
-          <Link to="/favorites">Favoris</Link>
+          <Link className="navLink ms-10" to="/favorites">
+            Favoris
+          </Link>
         </li>
       </ul>
     </nav>

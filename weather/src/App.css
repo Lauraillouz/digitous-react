@@ -1,0 +1,92 @@
+/* Général */
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: "Source Sans Pro";
+  padding: 50px;
+}
+@font-face {
+  font-family: "Source Sans Pro", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap");
+}
+@font-face {
+  font-family: "Ubuntu", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&family=Ubuntu&display=swap");
+}
+
+/* Margins */
+.ms-10 {
+  margin-left: 10px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+.p-20 {
+  padding: 20px;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+.m-10 {
+  margin: 10px;
+}
+
+/* Flex */
+.flex {
+  display: flex;
+}
+.justifyCenter {
+  justify-content: center;
+}
+
+/* Navbar */
+.navWrapper {
+  list-style-type: none;
+  background-color: rgb(237, 235, 235);
+}
+.navLink {
+  text-decoration: none;
+  color: salmon;
+}
+.navLink:hover {
+  font-weight: bolder;
+}
+
+/* Page title */
+.title {
+  font-family: "Ubuntu", sans-serif;
+  color: sandybrown;
+}
+
+/* Input + Button */
+.border {
+  border-radius: 3px;
+  border: 0.5px solid rgb(237, 235, 235);
+  padding: 10px;
+}
+.btn {
+  margin: 10px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 100px;
+  background-color: rgb(237, 235, 235);
+  text-align: center;
+  color: white;
+}
+
+/* CityCard */
+.cityCard {
+  margin: 20px;
+}
+hr {
+  border: 0.5px solid rgb(237, 235, 235);
+  width: 30%;
+  margin: 0 auto;
+}
+.center {
+  text-align: center;
+}
