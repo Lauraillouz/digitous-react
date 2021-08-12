@@ -1,14 +1,15 @@
 import React from "react";
 
 // Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 //Components
 import Button from "./Components/Button";
 import Card from "./Components/Card";
 
-class App extends React.Component {
+const URL = "https://restcountries.eu/rest/v2/name/";
 
+class App extends React.Component {
   constructor() {
     super();
 
@@ -17,41 +18,27 @@ class App extends React.Component {
       capital: "",
       flag: "",
       population: "",
-      region: ""
-    }
+      region: "",
+    };
   }
 
   componentDidMount() {
-    fetch("http://localhost:8000/france")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        this.setState({
-          name: data.data[0].name,
-          capital: data.data[0].capital,
-          flag: data.data[0].flag,
-          population: data.data[0].population,
-          region: data.data[0].region
-        })
-      })
+    this.getCountry("brazil");
   }
 
-
   getCountry = (country) => {
-    fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+    fetch(`${URL}${country}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         this.setState({
           name: data[0].name,
           capital: data[0].capital,
           flag: data[0].flag,
           population: data[0].population,
-          region: data[0].region
-        })
-      })
-  }
-
+          region: data[0].region,
+        });
+      });
+  };
 
   render() {
     return (
@@ -62,11 +49,9 @@ class App extends React.Component {
           <Button onClick={() => this.getCountry("croatia")}>Croatia</Button>
         </div>
 
-        <Card name={this.state.name} capital={this.state.capital} region={this.state.region} population={this.state.population} flag={this.state.flag} />
-      
+        <Card countryInfo={{ ...this.state }} />
       </div>
-
-    )
+    );
   }
 }
 
