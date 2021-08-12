@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import { UserContext } from "../App";
 
 const Login = () => {
@@ -15,11 +16,14 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const history = useHistory();
+
   const onSubmit = (data) => {
     if (isChecked) {
       localStorage.setItem("username", data.username);
     }
     isLoggedState.setAuth();
+    history.push("/");
   };
 
   const check = () => {
