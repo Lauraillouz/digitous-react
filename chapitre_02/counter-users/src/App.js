@@ -50,7 +50,7 @@ class App extends React.Component {
         <div>
           {users.map((user, index) => {
             if (index < this.state.count) {
-              return <UserInfo name={user.name} email={user.email} website={user.website} />
+              return <UserInfo key={user.id}name={user.name} email={user.email} website={user.website} />
             } else {
               return null;
             }
