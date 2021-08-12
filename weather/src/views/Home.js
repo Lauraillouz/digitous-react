@@ -4,6 +4,16 @@ import { FavoritesContext } from "../App";
 
 const API_KEY = "671d055643a6eb59b7142a143bfc725d";
 
+/* const backgroundRain = {
+  backgroundImage: "../../public/img/rain.jpeg",
+};
+const backgroundClouds = {
+  backgroundImage: "../../public/img/clouds.jpeg",
+};
+const backgroundSun = {
+  backgroundImage: "../../public/img/sun.jpeg",
+}; */
+
 const Home = () => {
   const favoriteCitiesState = useContext(FavoritesContext);
 
