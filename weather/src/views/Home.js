@@ -65,6 +65,11 @@ const Home = () => {
   };
 
   useEffect(() => {
+    setDefaultCity(JSON.parse(localStorage.getItem("defaultCity")));
+    setWeather(JSON.parse(localStorage.getItem("defaultCity")).weather);
+  }, []);
+
+  useEffect(() => {
     console.log(defaultCity);
     setCheck(false);
   }, [city]);
