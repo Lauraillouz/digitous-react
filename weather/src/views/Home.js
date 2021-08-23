@@ -57,7 +57,9 @@ const Home = () => {
   const saveAsFavorite = () => {
     if (
       favoriteCitiesState.favoriteCities.length < 3 &&
-      !favoriteCitiesState.favoriteCities.includes(city)
+      !favoriteCitiesState.favoriteCities.includes(
+        favoriteCitiesState.favoriteCities.id
+      )
     ) {
       favoriteCitiesState.setFavoriteCities((prev) => [
         ...prev,
@@ -68,6 +70,7 @@ const Home = () => {
 
   return (
     <Background
+      value={{ weather, setWeather }}
       weather={weather ? weather : ""}
       style={{
         backgroundPosition: "center",
@@ -77,7 +80,7 @@ const Home = () => {
       }}
     >
       <div>
-        <h2 className="title p-20">Home</h2>
+        <h2 className={!weather ? "defaultTitle p-20" : "title p-20"}>Home</h2>
 
         <form
           className="flex justifyCenter mb-100"

@@ -62,6 +62,9 @@ html {
   font-family: "Ubuntu", sans-serif;
   color: lightgoldenrodyellow;
 }
+.defaultTitle {
+  color: sandybrown;
+}
 
 /* Input + Button */
 .border {
@@ -86,6 +89,7 @@ html {
 /* CityCard */
 .cityCard {
   background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
   padding: 20px;
   margin: 0 50px 0 50px;
 }
