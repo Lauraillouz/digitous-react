@@ -85,7 +85,9 @@ html {
 
 /* CityCard */
 .cityCard {
-  margin: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  margin: 0 50px 0 50px;
 }
 hr {
   border: 0.5px solid rgb(237, 235, 235);

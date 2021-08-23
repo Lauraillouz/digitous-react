@@ -15,11 +15,11 @@ const Background = styled.div`
       case "Clear":
         return "url('./img/sun.jpeg')";
       case "Snow":
-        return "url('./img/snow.jpeg";
+        return "url('./img/snow.jpeg')";
       case "Mist":
-        return "url('./img/mist.jpeg";
+        return "url('./img/mist.jpeg')";
       case "Thunderstorm":
-        return "url('./img/thunderstorm.jpeg";
+        return "url('./img/thunderstorm.jpeg')";
       default:
         console.log("sorry", props.weather);
     }
@@ -73,9 +73,10 @@ const Home = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
+        padding: "50px",
       }}
     >
-      <div className="ms-10">
+      <div>
         <h2 className="title p-20">Home</h2>
 
         <form
@@ -92,7 +93,7 @@ const Home = () => {
         </form>
 
         {city && weather && temperature ? (
-          <div className="mt-30">
+          <div className="mt-30 cityCard">
             <p className="m-10 center">City: {city}</p>
             <hr></hr>
             <p className="m-10 center">
