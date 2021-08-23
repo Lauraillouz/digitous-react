@@ -38,7 +38,7 @@ const Home = () => {
   const [id, setId] = useState(0);
   const [defaultCity, setDefaultCity] = useState("");
   const [check, setCheck] = useState(false);
-  const [coord, setCoord] = useState({});
+  const [coord, setCoord] = useState([]);
 
   const {
     register,
@@ -57,7 +57,7 @@ const Home = () => {
         setTemperature(res.main.temp);
         setWeather(res.weather[0].main);
         setId(res.id);
-        setCoord({ lon: res.coord.lon, lat: res.coord.lat });
+        setCoord([res.coord.lat, res.coord.lon]);
       });
   };
   console.log("coord in Home", coord);
