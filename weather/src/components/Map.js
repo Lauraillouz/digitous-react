@@ -10,7 +10,7 @@ const Map = (props) => {
           // PROBLÈME : la carte s'affiche mais ne s'update pas
           center={props.coord}
           zoom={13}
-          scrollWheelZoom={false}
+          scrollWheelZoom={true}
           width={200}
         >
           <TileLayer

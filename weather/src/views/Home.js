@@ -61,11 +61,12 @@ const Home = () => {
       });
   };
   console.log("coord in Home", coord);
+  console.log("defaultCity coord in Home", defaultCity.coord);
 
   const saveAsDefault = () => {
     localStorage.setItem(
       "defaultCity",
-      JSON.stringify({ city, weather, temperature, id, coord })
+      JSON.stringify({ coord, city, weather, temperature, id })
     );
     setDefaultCity(JSON.parse(localStorage.getItem("defaultCity")));
   };
