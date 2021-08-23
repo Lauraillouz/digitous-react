@@ -160,7 +160,7 @@ const Home = () => {
           </div>
         ) : (
           <div className="mt-30 cityCard">
-            {/* <Map coord={defaultCity.coord} /> */}
+            <Map coord={defaultCity.coord} />
             <p className="m-10 center">City: {defaultCity.city}</p>
             <hr></hr>
             <p className="m-10 center">
