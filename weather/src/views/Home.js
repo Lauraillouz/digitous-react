@@ -127,7 +127,7 @@ const Home = () => {
 
         {city && weather && temperature && coord ? (
           <div className="mt-30 cityCard">
-            {/* <Map coord={coord} /> */}
+            <Map coord={coord} />
 
             <p className="m-10 center">City: {city}</p>
             <hr></hr>
