@@ -53,11 +53,11 @@ const Home = () => {
     )
       .then((res) => res.json())
       .then((res) => {
+        setCoord([res.coord.lat, res.coord.lon]);
         setCity(res.name);
         setTemperature(res.main.temp);
         setWeather(res.weather[0].main);
         setId(res.id);
-        setCoord([res.coord.lat, res.coord.lon]);
       });
   };
   console.log("coord in Home", coord);
