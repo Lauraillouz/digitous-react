@@ -32,6 +32,9 @@ html {
 .m-10 {
   margin: 10px;
 }
+.mb-100 {
+  margin-bottom: 100px;
+}
 
 /* Flex */
 .flex {
@@ -57,7 +60,7 @@ html {
 /* Page title */
 .title {
   font-family: "Ubuntu", sans-serif;
-  color: sandybrown;
+  color: lightgoldenrodyellow;
 }
 
 /* Input + Button */
@@ -75,7 +78,6 @@ html {
 
 /* Footer */
 .footer {
-  margin-top: 100px;
   background-color: rgb(237, 235, 235);
   text-align: center;
   color: white;

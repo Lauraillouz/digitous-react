@@ -1,18 +1,30 @@
 import { useState, useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FavoritesContext } from "../App";
+import styled from "styled-components";
 
 const API_KEY = "671d055643a6eb59b7142a143bfc725d";
 
-/* const backgroundRain = {
-  backgroundImage: "../../public/img/rain.jpeg",
-};
-const backgroundClouds = {
-  backgroundImage: "../../public/img/clouds.jpeg",
-};
-const backgroundSun = {
-  backgroundImage: "../../public/img/sun.jpeg",
-}; */
+const Background = styled.div`
+  background-image: ${(props) => {
+    switch (props.weather) {
+      case "Rain":
+        return "url('./img/rain.jpeg')";
+      case "Clouds":
+        return "url('./img/clouds.jpeg')";
+      case "Clear":
+        return "url('./img/sun.jpeg')";
+      case "Snow":
+        return "url('./img/snow.jpeg";
+      case "Mist":
+        return "url('./img/mist.jpeg";
+      case "Thunderstorm":
+        return "url('./img/thunderstorm.jpeg";
+      default:
+        console.log("sorry", props.weather);
+    }
+  }};
+`;
 
 const Home = () => {
   const favoriteCitiesState = useContext(FavoritesContext);
@@ -37,7 +49,7 @@ const Home = () => {
       .then((res) => {
         setCity(res.name);
         setTemperature(res.main.temp);
-        setWeather(res.weather[0].description);
+        setWeather(res.weather[0].main);
         setId(res.id);
       });
   };
@@ -55,40 +67,52 @@ const Home = () => {
   };
 
   return (
-    <div className="ms-10">
-      <h2 className="title p-20">Home</h2>
+    <Background
+      weather={weather ? weather : ""}
+      style={{
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="ms-10">
+        <h2 className="title p-20">Home</h2>
 
-      <form className="flex justifyCenter" onSubmit={handleSubmit(getCity)}>
-        <input
-          className="border"
-          type="text"
-          {...register("city", { required: true })}
-        />
-        {errors.city && <p>City is required.</p>}
-        <input className="btn border" type="submit" />
-      </form>
+        <form
+          className="flex justifyCenter mb-100"
+          onSubmit={handleSubmit(getCity)}
+        >
+          <input
+            className="border"
+            type="text"
+            {...register("city", { required: true })}
+          />
+          {errors.city && <p>City is required.</p>}
+          <input className="btn border" type="submit" />
+        </form>
 
-      {city && weather && temperature ? (
-        <div className="mb-20 mt-30">
-          <p className="m-10 center">City: {city}</p>
-          <hr></hr>
-          <p className="m-10 center">
-            Temperature: {Math.floor(parseInt(temperature) - 273.15) + " °C"}
-          </p>
-          <hr></hr>
-          <p className="m-10 center">Weather: {weather}</p>
-          <div className="flex justifyCenter">
-            <button
-              className="btn border center"
-              type="button"
-              onClick={saveAsFavorite}
-            >
-              Save as favorite
-            </button>
+        {city && weather && temperature ? (
+          <div className="mt-30">
+            <p className="m-10 center">City: {city}</p>
+            <hr></hr>
+            <p className="m-10 center">
+              Temperature: {Math.floor(parseInt(temperature) - 273.15) + " °C"}
+            </p>
+            <hr></hr>
+            <p className="m-10 center">Weather: {weather}</p>
+            <div className="flex justifyCenter">
+              <button
+                className="btn border center"
+                type="button"
+                onClick={saveAsFavorite}
+              >
+                Save as favorite
+              </button>
+            </div>
           </div>
-        </div>
-      ) : null}
-    </div>
+        ) : null}
+      </div>
+    </Background>
   );
 };
 

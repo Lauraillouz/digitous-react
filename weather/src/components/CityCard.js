@@ -12,7 +12,7 @@ const CityCard = () => {
   };
 
   return (
-    <div className="mb-20 mt-30">
+    <div className="mt-30">
       {favoriteCitiesState.favoriteCities.map((favoriteCity) => {
         return (
           <div key={favoriteCity.id}>
