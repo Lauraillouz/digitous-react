@@ -1,7 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FavoritesContext } from "../App";
+// Style
 import styled from "styled-components";
+//Component
+import Map from "../components/Map";
 
 const API_KEY = "671d055643a6eb59b7142a143bfc725d";
 
@@ -21,7 +24,7 @@ const Background = styled.div`
       case "Thunderstorm":
         return "url('./img/thunderstorm.jpeg')";
       default:
-        console.log("sorry", props.weather);
+        console.log("not yet");
     }
   }};
 `;
@@ -35,6 +38,7 @@ const Home = () => {
   const [id, setId] = useState(0);
   const [defaultCity, setDefaultCity] = useState("");
   const [check, setCheck] = useState(false);
+  const [coord, setCoord] = useState({});
 
   const {
     register,
@@ -53,13 +57,15 @@ const Home = () => {
         setTemperature(res.main.temp);
         setWeather(res.weather[0].main);
         setId(res.id);
+        setCoord({ lon: res.coord.lon, lat: res.coord.lat });
       });
   };
+  console.log("coord in Home", coord);
 
   const saveAsDefault = () => {
     localStorage.setItem(
       "defaultCity",
-      JSON.stringify({ city, weather, temperature, id })
+      JSON.stringify({ city, weather, temperature, id, coord })
     );
     setDefaultCity(JSON.parse(localStorage.getItem("defaultCity")));
   };
@@ -70,9 +76,8 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log(defaultCity);
     setCheck(false);
-  }, [city]);
+  }, [city, defaultCity]);
 
   const checkUncheck = () => {
     setCheck(true);
@@ -120,8 +125,10 @@ const Home = () => {
           <input className="btn border" type="submit" />
         </form>
 
-        {city && weather && temperature ? (
+        {city && weather && temperature && coord ? (
           <div className="mt-30 cityCard">
+            {/* <Map coord={coord} /> */}
+
             <p className="m-10 center">City: {city}</p>
             <hr></hr>
             <p className="m-10 center">
@@ -144,7 +151,7 @@ const Home = () => {
                 type="checkbox"
                 id="defaultCity"
                 name="defaultCity"
-                checked={check}
+                defaultChecked={check}
               />
               <label className="ms-10" htmlFor="defaultCity">
                 Default City
@@ -153,6 +160,7 @@ const Home = () => {
           </div>
         ) : (
           <div className="mt-30 cityCard">
+            {/* <Map coord={defaultCity.coord} /> */}
             <p className="m-10 center">City: {defaultCity.city}</p>
             <hr></hr>
             <p className="m-10 center">

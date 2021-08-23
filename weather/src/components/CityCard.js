@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const Background = styled.div`
   background-image: ${(props) => {
-    console.log(props.weather);
     switch (props.weather) {
       case "Rain":
         return "url('./img/rain.jpeg')";
@@ -19,14 +18,12 @@ const Background = styled.div`
       case "Thunderstorm":
         return "url('./img/thunderstorm.jpeg')";
       default:
-        console.log(props.weather);
     }
   }};
 `;
 
 const CityCard = () => {
   const favoriteCitiesState = useContext(FavoritesContext);
-  console.log(favoriteCitiesState);
 
   const removeFromFavorites = (id) => {
     let newFavCities = favoriteCitiesState.favoriteCities.filter(

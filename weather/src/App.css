@@ -101,3 +101,9 @@ hr {
 .center {
   text-align: center;
 }
+
+/* Map */
+.leaflet-container {
+  height: 250px;
+  width: 75%;
+}
