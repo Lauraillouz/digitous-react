@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FavoritesContext } from "../App";
 import styled from "styled-components";
@@ -33,6 +33,8 @@ const Home = () => {
   const [weather, setWeather] = useState("");
   const [temperature, setTemperature] = useState("");
   const [id, setId] = useState(0);
+  const [defaultCity, setDefaultCity] = useState("");
+  const [check, setCheck] = useState(false);
 
   const {
     register,
@@ -52,6 +54,24 @@ const Home = () => {
         setWeather(res.weather[0].main);
         setId(res.id);
       });
+  };
+
+  const saveAsDefault = () => {
+    localStorage.setItem(
+      "defaultCity",
+      JSON.stringify({ city, weather, temperature, id })
+    );
+    setDefaultCity(JSON.parse(localStorage.getItem("defaultCity")));
+  };
+
+  useEffect(() => {
+    console.log(defaultCity);
+    setCheck(false);
+  }, [city]);
+
+  const checkUncheck = () => {
+    setCheck(true);
+    saveAsDefault();
   };
 
   const saveAsFavorite = () => {
@@ -108,13 +128,57 @@ const Home = () => {
               <button
                 className="btn border center"
                 type="button"
-                onClick={saveAsFavorite}
+                onClick={() => saveAsFavorite()}
               >
                 Save as favorite
               </button>
             </div>
+            <div className="flex justifyCenter">
+              <input
+                onClick={() => checkUncheck()}
+                type="checkbox"
+                id="defaultCity"
+                name="defaultCity"
+                checked={check}
+              />
+              <label className="ms-10" htmlFor="defaultCity">
+                Default City
+              </label>
+            </div>
           </div>
-        ) : null}
+        ) : (
+          <div className="mt-30 cityCard">
+            <p className="m-10 center">City: {defaultCity.city}</p>
+            <hr></hr>
+            <p className="m-10 center">
+              Temperature:{" "}
+              {Math.floor(parseInt(defaultCity.temperature) - 273.15) + " °C"}
+            </p>
+            <hr></hr>
+            <p className="m-10 center">Weather: {defaultCity.weather}</p>
+            <div className="flex justifyCenter">
+              <button
+                className="btn border center"
+                type="button"
+                onClick={() => saveAsFavorite()}
+              >
+                Save as favorite
+              </button>
+            </div>
+            <div className="flex justifyCenter">
+              <input
+                onClick={() => saveAsDefault()}
+                type="checkbox"
+                id="defaultCity"
+                name="defaultCity"
+                defaultChecked={check}
+              />
+              <label className="ms-10" htmlFor="defaultCity">
+                Default City
+              </label>
+            </div>
+          </div>
+        )}
       </div>
     </Background>
   );

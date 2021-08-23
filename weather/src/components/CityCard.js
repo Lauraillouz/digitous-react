@@ -47,6 +47,7 @@ const CityCard = () => {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 padding: "50px",
+                marginBottom: "50px",
               }}
             >
               <div className="cityCard">
