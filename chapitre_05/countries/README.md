@@ -6,12 +6,12 @@ First Fullstack Project
 
 ## Technologies:
 * FRONT:
-  ** jQuery
-  ** HTML5
-  ** CSS3
+  * jQuery
+  * HTML5
+  * CSS3
 * BACK: 
-  ** Node.js
-  ** Express
+  * Node.js
+  * Express
 
 ## Get started
 1. Clone project
