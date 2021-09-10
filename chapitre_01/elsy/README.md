@@ -1,8 +1,8 @@
 # Health App (school project)
 
 ## Description
-Create an application that calculates the amount of water you need to drink depending on the temperature, number of steps and heartbeat
-Requirements:
+Create an application that calculates the amount of water you need to drink depending on the temperature, number of steps and heartbeat.
+###Requirements:
 * 4 boxes that alternate colors
 * the minimum water is 1.5L
 
