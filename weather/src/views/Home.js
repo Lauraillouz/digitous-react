@@ -60,8 +60,6 @@ const Home = () => {
         setId(res.id);
       });
   };
-  console.log("coord in Home", coord);
-  console.log("defaultCity coord in Home", defaultCity.coord);
 
   const saveAsDefault = () => {
     localStorage.setItem(
@@ -73,7 +71,9 @@ const Home = () => {
 
   useEffect(() => {
     setDefaultCity(JSON.parse(localStorage.getItem("defaultCity")));
-    setWeather(JSON.parse(localStorage.getItem("defaultCity")).weather);
+    if (localStorage.getItem("defaultCity")) {
+      setWeather(JSON.parse(localStorage.getItem("defaultCity")).weather);
+    }
   }, []);
 
   useEffect(() => {
@@ -161,15 +161,20 @@ const Home = () => {
           </div>
         ) : (
           <div className="mt-30 cityCard">
-            <Map coord={defaultCity.coord} />
-            <p className="m-10 center">City: {defaultCity.city}</p>
-            <hr></hr>
-            <p className="m-10 center">
-              Temperature:{" "}
-              {Math.floor(parseInt(defaultCity.temperature) - 273.15) + " °C"}
-            </p>
-            <hr></hr>
-            <p className="m-10 center">Weather: {defaultCity.weather}</p>
+            {defaultCity && (
+              <>
+                <Map coord={defaultCity.coord} />
+                <p className="m-10 center">City: {defaultCity.city}</p>
+                <hr></hr>
+                <p className="m-10 center">
+                  Temperature:{" "}
+                  {Math.floor(parseInt(defaultCity.temperature) - 273.15) +
+                    " °C"}
+                </p>
+                <hr></hr>
+                <p className="m-10 center">Weather: {defaultCity.weather}</p>
+              </>
+            )}
             <div className="flex justifyCenter">
               <button
                 className="btn border center"
